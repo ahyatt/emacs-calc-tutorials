@@ -1,0 +1,34 @@
+Ever want to know how many seconds old David Hasselhoff is? calc can do many
+things, but it doesn't know much about Hasselhoff, so first I do a query on
+Google for [david hasselhoff]. I get a knowledge card on the right saying he was
+born July 17, 1952. It doesn't give a time, so we'll just assume it was at
+midnight.
+
+#+BEGIN_EXAMPLE
+M-x calc
+t N (put the current time on the stack)
+'<Jul 17, 1952> (press ' to enter algebraic mode, then you input the date).
+- (subtract the two to get the number of days David has been alive)
+24 (we're going to multiply by 24, the number of hours in a day)
+60 (the number of minutes in an hour)
+60 (the number of seconds in a minute)
+*
+*
+*
+
+Final result:
+1:  1910255938.01
+#+END_EXAMPLE
+
+There you have it, he's... wait, how many seconds?  That's really hard to read.
+
+Back into calc!
+
+#+BEGIN_EXAMPLE
+d g (toggle digit grouping)
+
+The final final result:
+1:  1,910,255,938.01
+#+END_EXAMPLE
+
+Ah, that's a 1.9 billion seconds.  Sweet!

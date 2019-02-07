@@ -1,0 +1,75 @@
+Jim is 42 years old. He has one brother, and their total age is 100. What is the
+brother's age? OK, this isn't a very hard problem, but let's just introduce calc
+algebra by solving it.
+
+#+BEGIN_EXAMPLE
+M-x calc
+'42 + x = 100  (' to enter algebraic input)
+a S x  (solve for x)
+
+Result:
+1:  x = 58
+#+END_EXAMPLE
+
+Let's make this harder. Jim and Dan's ages sum to 100. Jim is 5 years older than
+Dan. How old are they?
+
+#+BEGIN_EXAMPLE
+'[j + d = 100, d + 5 = j]
+a S j,d
+
+Result:
+1:  [j = 52.5, d = 47.5]
+#+END_EXAMPLE
+
+Nice!
+
+And of course it can give you more than just numerical solutions:
+
+#+BEGIN_EXAMPLE
+'sin(x) + tan(y) = pi / 2
+a S y  (solve for y)
+
+Result:
+1:  y = arctan(pi / 2 - sin(x))
+#+END_EXAMPLE
+
+Sometimes there are more than one solution.  For example:
+#+BEGIN_EXAMPLE
+'x^2 = 25
+a S x
+
+Result:
+1:  x = 5
+#+END_EXAMPLE
+
+Wait, what happened to -5! That's a valid solution, why didn't calc tell us
+about it? What's happening here is that calc is telling us about the first valid
+thing it can find, which is basically how it operates. But you can always get
+everything:
+
+#+BEGIN_EXAMPLE
+'x^2 = 25
+a P x  (find the polynomial solutions)
+
+Result:
+1:  [5, -5]
+#+END_EXAMPLE
+
+Sometimes there aren't a finite number of results because you aren't dealing
+with polynomials. You can just get a generalized solution:
+
+#+BEGIN_EXAMPLE
+'sin(x)^2 = 25
+H a S x  (solve for x, giving the generalized solution)
+
+Result:
+1:  x = arcsin(5 s1) (-1)^n1 + 180 n1
+#+END_EXAMPLE
+
+This uses the calc notation =n1=, which you just means any integer. You can also
+see another notation =s1= which means any sign. In this case =5 s1= means that that
+number can be 5 or -5.
+
+Looking at how awesome calc is, it's just a shame I never knew about it in high
+school...

@@ -1,0 +1,39 @@
+Did you know you could work with strings in calc? For an example, let's find out
+what "Hello world" is in binary:
+
+#+BEGIN_EXAMPLE
+M-x calc
+d 2 (change the to binary mode)
+"Hello world (Enter the string "Hello world" which turns into a vector of numbers)
+
+Result:
+1:  [2#1001000, 2#1100101, 2#1101100, 2#1101100, 2#1101111, 2#100000, 2#1110111, 2#1101111, 2#1110010, 2#1101100, 2#1100100]
+#+END_EXAMPLE
+
+And similarly, we can convert back. If someone gave you the binary number:
+=01001000011011110110110001100001= and asked what the string was, I'd have no
+idea... but calc knows:
+
+#+BEGIN_EXAMPLE
+d " (changes to string mode)
+C-x b scratch   (whaaa, leave calc?)
+01001000011011110110110001100001  (enter the number we're parsing)
+C-a  (go to the start of the line)
+C-x (  (start a macro)
+2# (prefix the number with a binary indicator)
+C-u 8 C-f  (Jump forward 8 characters)
+<space>  (insert a space to separate the numbers)
+C-x )  (end the macro)
+C-x e  (repeat the macro)
+e e  (repeat twice twice more)
+C-<space>  (set mark)
+C-a  (goto beginning of line)
+C-x <asterisk> g  (copy region into calc)
+
+Result:
+
+1:  "Hola"
+#+END_EXAMPLE
+
+And there you have it! Maybe there is an easier way to convert from the giant
+binary number to a vector of bytes, but I don't know it yet. 

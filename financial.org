@@ -1,0 +1,83 @@
+I recently chatted with emacspeak creator T.V. Raman, and told him I was
+writing a series of short tutorials about calc. He is really a calc fanatic, and
+told me a story in which he astounded a loan officer by calculating scheduled
+loan payments with just a few keystrokes in calc. Raman is living proof that
+calc is a useful tool for so many situations, and it always pays to have emacs
+running. He also mentioned that he found the explanation in the calc tutorial
+about the financial functions to be the clearest he's ever read.
+
+So, yes, calc can do finance. Let's say that you were sitting in front of a loan
+officer, and she told you that for your loan of $500,000, you need to pay in 30
+installments with a 5% interest rate. How much do you need to pay each month?
+Wait a second! Stop right there, loan officer! I have calc!
+
+#+BEGIN_EXAMPLE
+M-x calc
+500000  (the amount of the loan)
+30   (the number of payments)
+'5%  (equivalent to typing 0.05)
+b M  (calc-fin-pmt, computing the amount of periodic payments to amortize a loan)
+
+Result:
+1:  25,000
+#+END_EXAMPLE
+
+OK, but that's a bit obvious, since $25,000 is just 5% of $500,000. If the
+number of payments was much smaller, we'd get a larger value. Let's take another
+question: if you wanted to only pay $10,000 in each installment? How many
+installments would it take to pay off the loan?
+
+#+BEGIN_EXAMPLE
+'5%
+10000  (the payment we want to make)
+500000  (the loan amount)
+b #  (calc-fin-nper, calculate the number of installments needed)
+
+Result
+1:  nper(0.05, 10,000, 500,000)
+#+END_EXAMPLE
+
+What? Oh, I see, I also go the message: "Payment too small to cover interest
+rate: 10000". Oh, right, 5% of $500,000 is already $25,000, so we'd never pay it
+off at that rate. What if we payed $50,000 instead?
+
+#+BEGIN_EXAMPLE
+'5%
+50000  (the payment we want to make)
+500000  (the loan amount)
+b #
+
+Result:
+1: 14.2066908
+#+END_EXAMPLE
+
+So, it would take just over 14 payments to pay off the loan.
+
+OK, one more cool one: Let's say you meet an investment banker who gives you the
+following deal. I've got a investment for you, she says. Just give me $100,000
+and I'll give you $10,000 at the end of each year for the next 12 years.
+Assuming the interest rate will stay at 3% for the next 12 years. Is it a good
+deal?
+
+Hey, what are you asking me for? I have no idea! Calc knows, though, because it
+can tell you the break-even point for the cost of an investment that gives
+periodic payments.
+
+#+BEGIN_EXAMPLE
+'3%  (the interest rate)
+12  (the number of payments)
+10000  (the payment you get each time)
+b P  (calc-fin-pv, calculate the "present value" of the investment, the break-even point for the investment)
+
+Result:
+1:  99,540.0399357
+#+END_EXAMPLE
+
+In other words, the break-even point for the initial cost is $99,540. If the
+investment costs more than this, it's no good at that assumed interest rate.
+Better reject the deal. Trust calc more than any investment banker.
+
+This is just a small sampling of some of the financial calculations that calc
+can perform. The next time you are making an investment, fire up calc. You'll
+not only have confidence in the deal, you may just amaze someone with the power
+of emacs, just like T.V. Raman did.

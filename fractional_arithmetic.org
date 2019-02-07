@@ -1,0 +1,57 @@
+This one is pretty short, but it's about one of my favorite features of calc:
+the ability to handle fractions as fractions instead of rendering them as real
+numbers.
+
+Quick, what's =5/8 + 9/21=?
+
+Um, ok... better start multiplying things... wait, let's just tell calc to do
+it.
+
+#+BEGIN_EXAMPLE
+M-x calc
+5:8  (this is how you enter a fraction)
+9:21 
++
+
+Result:
+1:  59/56
+#+END_EXAMPLE
+
+So easy! If we want to convert it to a float you can do this: 
+
+#+BEGIN_EXAMPLE
+c f (convert to
+float)
+
+Result:
+
+1:  1.05357142857*10.^0
+#+END_EXAMPLE
+
+And if you want it back as a fraction, then just do:
+
+#+BEGIN_EXAMPLE
+c F  (convert to fraction)
+
+Result:
+
+1:  59/56 
+#+END_EXAMPLE
+
+That's so awesome!
+
+You could also enter fractions this way:
+
+#+BEGIN_EXAMPLE
+m f  (set fraction mode, integer division will result in fractions)
+5
+8
+/
+
+Result:
+
+1:  5/8
+#+END_EXAMPLE
+
+Now you can live in the nice world of fractions as much as you like. It's a nice
+world, full of pleasant to look at integers taking up little horizontal space

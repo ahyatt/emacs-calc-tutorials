@@ -1,0 +1,27 @@
+OK, seems like there's interest in some quick calc tips. Here's today's:
+
+How to convert decimal to hexidecimal. Let's say you want to convert number
+12345 to hex.
+
+#+BEGIN_EXAMPLE
+M-x calc
+d 6 (sets the number radix to 16, meaning all output will be in hex)
+10#12345 (inputs the number 12345 in base 10)
+
+The output reads:
+1:  16#3039
+#+END_EXAMPLE
+
+The answer is therefore =0x3039=.
+
+And then you can do a =d 0= to set the number radix back to normal, base 10.
+
+Here's how to do the other way.  Let's convert =0xABCDEF= to base 10.
+
+#+BEGIN_EXAMPLE
+M-x calc
+16#ABCDEF
+
+The output reads:
+1:  11259375
+#+END_EXAMPLE

@@ -1,0 +1,135 @@
+Quick! What bits are set on the number 925817? What, are you going to convert it
+to binary and note positions of 1s? Ha! I laugh at such primitive techniques.
+
+#+BEGIN_EXAMPLE
+M-x calc
+925817
+b u  (unpack the bits into a vector)
+
+Result
+1:  [0, [3 .. 6], 13, [17 .. 19]]
+#+END_EXAMPLE
+
+How many bits is that?
+
+#+BEGIN_EXAMPLE
+v #  (count the number of items in a vector)
+
+Result:
+1:  9
+#+END_EXAMPLE
+
+This is convenient! So yes, calc has some nice functions for binary numbers. The
+interesting thing about calc's binary number functions aren't just that you can
+do bitwise operations such as AND and OR, but it has the notion of a word size
+that it works with. Well, it'd have to do things like NOT.
+
+Let's check it out.  First, we'll see what the number 925817 looks like in binary.
+
+#+BEGIN_EXAMPLE
+925817
+d 2
+
+Result:
+1:  2#11100010000001111001
+#+END_EXAMPLE
+
+This is nice, but it'd be better to see the whole word.
+
+#+BEGIN_EXAMPLE
+d z  (Display leading zeroes)
+
+Result:
+1:  2#00000000000011100010000001111001
+#+END_EXAMPLE
+
+Ah, that's more like it. The word size by default is 32 bits, as you can see.
+Or, wait, can you see? Hard to count. Let's verify it.
+
+#+BEGIN_EXAMPLE
+d 0  (go back to base-10 mode)
+0  (we start with 0)
+b n  (calculate the not)
+
+Result:
+1:  4294967295
+#+END_EXAMPLE
+
+Now we already know how to count the 1's...
+
+#+BEGIN_EXAMPLE
+b u v #
+
+Reuslt:
+
+1:  0000000032
+#+END_EXAMPLE
+
+Whoops, looks like we still have leading 0s.  But we've confirmed it, so let's just let it go for now.
+
+Now, let's see what the number 925817 is if you reverse all the bits. I can't
+take credit for this particular bit of cleverness, this technique comes straight
+from calc's info pages.
+
+#+BEGIN_EXAMPLE
+d z  (get rid of leading 0s)
+925817
+b u  (unpack into a vector)
+31 <tab> -  (tranform each bit position by subtracting it from 31, the tab just switches the items around on the stack)
+b p  (repack the vector)
+
+Result:
+1:  2651090944
+#+END_EXAMPLE
+
+Woody Allen once praised New York by saying how he loves that you can go to
+Chinatown and eat a crab in the middle of the night, but in reality what kind of
+crazy person would need to do that? I feel the same way about all these
+features. Will I really ever need to reverse the bits of a number? Not sure, but
+I do love the way that calc has me covered for whatever I really want to do.
+
+By the way, want to go to 64-bit mode?  Just change the word size.
+
+#+BEGIN_EXAMPLE
+b w 64  (change the word size to 64)
+#+END_EXAMPLE
+
+Now let's reverse the bits of 925817 again to see what we get. It'll be
+amusingly huge!
+
+#+BEGIN_EXAMPLE
+925817
+b u  (unpack into a vector)
+63 <tab> -  (tranform each number by subtracting it from 31, the tab just switches the items around on the stack)
+b p  (repack the vector)
+
+Result:
+1:  11386348903201767424
+#+END_EXAMPLE
+
+Ah, that's what it was. I was just about to give that same answer myself.
+
+One more cool thing. If you give a negative word size, calc will interpret
+binary number as 2's complement numbers. For example:
+
+#+BEGIN_EXAMPLE
+b w 32  (set the word size to 32)
+2  (just to choose a simple number)
+b n  (bitwise not)
+
+Result:
+1:  4294967293
+#+END_EXAMPLE
+
+And now with 2's complement!
+
+#+BEGIN_EXAMPLE
+b w -32  (set the word size to -32, in other words, a 2's complement version of 32 bit)
+2
+b n
+
+Result:
+1:  -3
+#+END_EXAMPLE
+
+Hope this helps you twiddle those bits in all the ways that make you happy.

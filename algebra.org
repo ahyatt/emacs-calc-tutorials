@@ -1,0 +1,95 @@
+I think it's time to write about one of the amazing things that calc can do:
+algebra!
+
+Before we get into how to solve equations, I just want to write about on some
+cool things you can do with the calc display.
+
+Let's say you have a formula you want to work with =a + sqrt(b) =  5=. Let's enter
+that into calc:
+
+#+BEGIN_EXAMPLE
+M-x calc
+'a + sqrt(b) = 5  (' starts algebraic mode).
+
+Result:
+1:  a + sqrt(b) = 5
+#+END_EXAMPLE
+
+Well, that's not so surprising, that's what we put in. Kind of disappointing,
+though. Is that it calc? We love your brains, but what about your looks? That's
+important too!
+
+#+BEGIN_EXAMPLE
+d B  (turn on calc-big-language mode)
+
+Result:
+         ___
+1:  a + V b  = 5
+#+END_EXAMPLE
+
+Hey, that's an ASCII square-root symbol. What other cool things can you do here?
+
+#+BEGIN_EXAMPLE
+a^2
+
+Result:
+
+     2
+1:  a
+
+3:4   (enter the fraction 3/4)
+
+Result:
+
+    3
+1:  -
+    4
+#+END_EXAMPLE
+
+Here's how to get back:
+#+BEGIN_EXAMPLE
+d N  (calc-normal-language)
+#+END_EXAMPLE
+
+And an alternative, in which all operators are explicitly represented as
+functions:
+
+#+BEGIN_EXAMPLE
+1:  a + sqrt(b) = 5  (re-enter the formula)
+d U  (calc-unformatted-language)
+
+Result:
+1:  eq(add(a, sqrt(b)), 5)
+#+END_EXAMPLE
+
+But, wait, did you think that's all? What if you wanted to enter that equation
+in Mathematica?
+
+#+BEGIN_EXAMPLE
+d M  (calc-mathematica-language)
+
+Result:
+
+1:  a + Sqrt[b] == 5
+#+END_EXAMPLE
+
+Ooh!  Calc!  Do c++ next!
+
+#+BEGIN_EXAMPLE
+d C  (calc-c-language)
+
+1:  a + sqrt(b) == 5
+#+END_EXAMPLE
+
+Latex!
+
+#+BEGIN_EXAMPLE
+d L  (calc-latex-language)
+
+Result:
+
+1:  a + \sqrt{b} = 5
+#+END_EXAMPLE
+
+I could keep going, but trust me, there's more. And you can even define your own
+languages by constructing syntax tables, but I won't get into that now.

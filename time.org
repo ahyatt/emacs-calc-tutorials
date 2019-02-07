@@ -1,0 +1,49 @@
+Hey, what's the time? It's time to get ill! No, actually I meant the time in
+seconds since the epoch. Yesterday I went over doing math with time, which is
+fun but not something I use everyday. Much more useful is converting to and from
+Unix timestamps.
+
+Let's start by getting the time now in seconds since the epoch:
+
+#+BEGIN_EXAMPLE
+M-x calc
+t N (get the time now)
+t U (convert the time to seconds since the epoch)
+
+Result:
+1:  1359424746
+#+END_EXAMPLE
+
+Oh, and you want to insert that into your last used buffer?
+
+#+BEGIN_EXAMPLE
+y (that doesn't mean "yes", that means yank into the last buffer)
+#+END_EXAMPLE
+
+Done!  Just to be complete, let's convert another date we have to input:
+
+#+BEGIN_EXAMPLE
+'<12:00pm Jul 4, 1776> (single quote to enter algebraic mode, then the date)
+t U (converts the time to seconds since the epoch)
+#+END_EXAMPLE
+
+But wait, what will happen?  This is considerably before the epoch.
+
+#+BEGIN_EXAMPLE
+Result:
+1:  -6106003200
+#+END_EXAMPLE
+
+Oh calc, you never let me down.
+
+Let's do the other way.  Remember the Billenium?
+
+#+BEGIN_EXAMPLE
+1e9
+t U (converts the time in seconds since the epoch to text)
+
+Result:
+1:  <9:46:40pm Sat Sep 8, 2001>
+#+END_EXAMPLE
+
+Wow, I never realized how close the Billenium was to September 11th.  Kind of spooky...

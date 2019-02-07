@@ -1,0 +1,47 @@
+Quick, integrate =2x + sin(y)=! Well, frankly, it's been so long since I've done
+calculus by hand I can't remember anymore. Well, knowing calculus is good, but
+knowing calc is even more useful!
+
+#+BEGIN_EXAMPLE
+M-x calc
+'2x + sin(y)  (The single quote enters algebraic mode)
+a i y  (Calculate the integral with respect to y)
+
+Result
+1:  2 x y - 180 cos(y) / pi
+#+END_EXAMPLE
+
+You can also integrate over specific regions by using C-u a i, whereupon it will
+prompt you for the start and end point of the integration.
+
+As the manual mentions, the results are often not as simplified as they could
+be. Calc is impressive, but it isn't as sophisticated as Mathematica.
+
+An example of some issues are if we just take the derivative of the integral we
+just calculated. We should get back to our original formula.
+
+#+BEGIN_EXAMPLE
+a d y  (Calculate the derivative with respect to y)
+
+Result:
+1:  2 x + 3.14159265358 sin(y) / pi
+#+END_EXAMPLE
+
+Clearly this should be 2x + sin(y), but calc may have made an error.
+
+OK, let's make calc do something cool so we can forget this unfortunate
+incident. Hey, how about making a Taylor series of a function?
+
+#+BEGIN_EXAMPLE
+'2x + sin(y) (re-enter the formula)
+a t y 6  (Calculate the Taylor series of a term, over y, for 6 terms)
+
+Result:
+1:  2 x + y - y^3 / 6 + y^5 / 120 - y^7 / 5040 + y^9 / 362880
+#+END_EXAMPLE
+
+This isn't a bad approximation, see [[https://www.google.com/search?q=y+-+y%5E3+%2F+6+%2B+y%5E5+%2F+120+-+y%5E7+%2F+5040+%2B+y%5E9+%2F+362880][Google’s answer]] for comparison.
+
+So, yes, calc can do college-level math, even if the answers aren't perfectly
+simplified. It's not Mathematica, but it is free and integrated into emacs, so
+it's definitely nice to have.
