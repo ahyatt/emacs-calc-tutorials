@@ -1,0 +1,8 @@
+This repository contains tutorials about emacs calc originally writen on the
+Emacs community on Google+.
+
+The best way to read is probably just to open the org files directly, which
+Github will display correctly.
+
+If anyone would like to correct anything, add any tutorials, or request
+anything, the normal Github bug / request / or pull request process will work.
