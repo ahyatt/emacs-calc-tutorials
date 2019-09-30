@@ -8,50 +8,49 @@ about the financial functions to be the clearest he's ever read.
 
 So, yes, calc can do finance. Let's say that you were sitting in front of a loan
 officer, and she told you that for your loan of $500,000, you need to pay in 30
-installments with a 5% interest rate. How much do you need to pay each month?
+installments with a 5% interest rate per year. How much do you need to pay each month?
 Wait a second! Stop right there, loan officer! I have calc!
 
 #+BEGIN_EXAMPLE
 M-x calc
+'5%/12  (monthly interest = yearly interest (0.05) divided by the number of months)
+30   (the number of monthly payments)
 500000  (the amount of the loan)
-30   (the number of payments)
-'5%  (equivalent to typing 0.05)
 b M  (calc-fin-pmt, computing the amount of periodic payments to amortize a loan)
 
 Result:
-1:  25,000
+1:  17764.6821816
 #+END_EXAMPLE
 
-OK, but that's a bit obvious, since $25,000 is just 5% of $500,000. If the
-number of payments was much smaller, we'd get a larger value. Let's take another
-question: if you wanted to only pay $10,000 in each installment? How many
+If the number of payments was much smaller, we'd get a larger value. Let's take another
+question: if you wanted to only pay $1,000 in each installment? How many
 installments would it take to pay off the loan?
 
 #+BEGIN_EXAMPLE
-'5%
-10000  (the payment we want to make)
+'5%/12 (monthly interest)
+1000  (the payment we want to make)
 500000  (the loan amount)
 b #  (calc-fin-nper, calculate the number of installments needed)
 
 Result
-1:  nper(0.05, 10,000, 500,000)
+1:  nper(4.16666666667e-3, 1000, 500000)
 #+END_EXAMPLE
 
 What? Oh, I see, I also go the message: "Payment too small to cover interest
-rate: 10000". Oh, right, 5% of $500,000 is already $25,000, so we'd never pay it
-off at that rate. What if we payed $50,000 instead?
+rate: 1000". Oh, right, 5% of $500,000 divided by 12 month is already $2,083, so we'd never pay it
+off at that rate. What if we payed $10,000 instead?
 
 #+BEGIN_EXAMPLE
-'5%
-50000  (the payment we want to make)
+'5%/12
+10000  (the payment we want to make)
 500000  (the loan amount)
 b #
 
 Result:
-1: 14.2066908
+1:  56.184290761
 #+END_EXAMPLE
 
-So, it would take just over 14 payments to pay off the loan.
+So, it would take just over 56 months to pay off the loan.
 
 OK, one more cool one: Let's say you meet an investment banker who gives you the
 following deal. I've got a investment for you, she says. Just give me $100,000
